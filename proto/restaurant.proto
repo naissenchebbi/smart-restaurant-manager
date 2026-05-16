@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+service RestaurantService {
+  rpc GetRestaurant (GetRestaurantRequest) returns (RestaurantResponse);
+  rpc CreateRestaurant (CreateRestaurantRequest) returns (RestaurantResponse);
+  rpc GetMenu (GetMenuRequest) returns (MenuResponse);
+  rpc AddMenuItem (AddMenuItemRequest) returns (MenuItemResponse);
+}
+
+message GetRestaurantRequest {
+  string id = 1;
+}
+
+message RestaurantResponse {
+  string id = 1;
+  string name = 2;
+  string address = 3;
+  string phone = 4;
+}
+
+message CreateRestaurantRequest {
+  string name = 1;
+  string address = 2;
+  string phone = 3;
+}
+
+message GetMenuRequest {
+  string restaurant_id = 1;
+}
+
+message MenuResponse {
+  repeated MenuItem items = 1;
+}
+
+message MenuItem {
+  string id = 1;
+  string name = 2;
+  double price = 3;
+  string category = 4;
+}
+
+message AddMenuItemRequest {
+  string restaurant_id = 1;
+  string name = 2;
+  double price = 3;
+  string category = 4;
+}
+
+message MenuItemResponse {
+  string id = 1;
+  string name = 2;
+  double price = 3;
+  string category = 4;
+}

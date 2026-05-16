@@ -1,0 +1,15 @@
+{
+  "name": "smart-restaurant-manager",
+  "version": "1.0.0",
+  "description": "\"Microservices-based restaurant management system with gRPC, REST, GraphQL, and Kafka\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
