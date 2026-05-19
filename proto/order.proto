@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package order;
+
 service OrderService {
   rpc CreateOrder (CreateOrderRequest) returns (OrderResponse);
   rpc GetOrder (GetOrderRequest) returns (OrderResponse);

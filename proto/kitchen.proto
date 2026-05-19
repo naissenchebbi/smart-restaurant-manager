@@ -1,18 +1,15 @@
 syntax = "proto3";
 
+package kitchen;
+
 service KitchenService {
-  rpc GetQueue (GetQueueRequest) returns (QueueResponse);
-  rpc UpdatePreparationStatus (UpdateStatusRequest) returns (StatusResponse);
-  rpc GetOrderFromQueue (GetQueueOrderRequest) returns (QueueOrderResponse);
+  rpc GetKitchenQueue (Empty) returns (QueueReply);
+  rpc MarkOrderReady (MarkOrderReadyRequest) returns (ReadyReply);
+  rpc GetOrderStatus (GetOrderStatusRequest) returns (OrderStatusReply);
+  rpc AddKitchenStaff (AddStaffRequest) returns (StaffReply);
 }
 
-message GetQueueRequest {
-  string restaurant_id = 1;
-}
-
-message QueueResponse {
-  repeated QueueOrder orders = 1;
-}
+message Empty {}
 
 message QueueOrder {
   string order_id = 1;
@@ -22,24 +19,37 @@ message QueueOrder {
   string chef_name = 5;
 }
 
-message UpdateStatusRequest {
-  string order_id = 1;
-  string status = 2;
-  string chef_name = 3;
+message QueueReply {
+  repeated QueueOrder orders = 1;
 }
 
-message StatusResponse {
+message MarkOrderReadyRequest {
+  string order_id = 1;
+}
+
+message ReadyReply {
   bool success = 1;
   string message = 2;
 }
 
-message GetQueueOrderRequest {
+message GetOrderStatusRequest {
   string order_id = 1;
 }
 
-message QueueOrderResponse {
+message OrderStatusReply {
   string order_id = 1;
   string status = 2;
-  string started_at = 3;
-  string completed_at = 4;
+  string ready_at = 3;
+}
+
+message AddStaffRequest {
+  string name = 1;
+  string role = 2;
+}
+
+message StaffReply {
+  int32 id = 1;
+  string name = 2;
+  string role = 3;
+  bool success = 4;
 }

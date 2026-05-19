@@ -1,4 +1,5 @@
 syntax = "proto3";
+package restaurant; 
 
 service RestaurantService {
   rpc GetRestaurant (GetRestaurantRequest) returns (RestaurantResponse);
